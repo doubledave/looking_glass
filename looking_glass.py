@@ -11,7 +11,7 @@ class App(LookingGlass):
     """
 
     def _config_(self):
-        from lib.common.conf.config import Config
+        from looking_glass.lib import Config
         config = Config()
         conf = Config.config()
         return conf
@@ -44,7 +44,7 @@ class App(LookingGlass):
 
     def __init__(self):
         self.log = self._start_logger_()
-        from lib.common.conf.config import Config
+        from looking_glass.lib import Config
 
         self.conf = Config()
         self.conf
@@ -52,7 +52,7 @@ class App(LookingGlass):
 
     # noinspection SpellCheckingInspection
     def run(self, ):
-        from lib.gui import GUI
+        from looking_glass.lib import GUI
 
 
 
@@ -82,7 +82,7 @@ class App(LookingGlass):
                 log.info('User indicated a desire to enter the Settings menu')
 
                 log.debug('Preparing window')
-                from lib.gui.window_models.opts_window import OptsWindow
+                from looking_glass.lib import OptsWindow
                 opts_win_active = True
                 log.debug('Options Window set to active.')
                 log.debug('Calling Options Window builder')
@@ -107,7 +107,7 @@ class App(LookingGlass):
                 if event2 == 'opts_win_ok':
                     log.debug('User indicated a desire to exit the config window')
 
-                    from lib.common.conf.config import Config
+                    from looking_glass.lib import Config
                     Config.write(config)
 
                 # If the user presses 'Test Key' we test their API key

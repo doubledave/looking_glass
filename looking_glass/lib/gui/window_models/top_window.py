@@ -1,4 +1,4 @@
-from lib.gui import GUI
+from looking_glass.lib import GUI
 
 
 class TopWindow(GUI):
@@ -19,7 +19,7 @@ class TopWindow(GUI):
                 break
 
             if event == 'opts_win_ok':
-                from lib.common.conf.config import Config
+                from looking_glass.lib import Config
                 Config.write("conf/config.ini")
 
     def _first_time_(self, config):
@@ -70,7 +70,7 @@ class TopWindow(GUI):
     def _sense_frame_(config):
         device_name = 'Living Room'
         import PySimpleGUIQt as qt
-        from lib.sense.info import SenseInfo
+        from looking_glass.lib import SenseInfo
         info = SenseInfo()
 
         if config.get('sense_customize', 'dsp_temp') == 'F':
