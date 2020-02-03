@@ -1,4 +1,4 @@
-from lib.gui import GUI
+from looking_glass.lib import GUI
 
 class TopMenu(GUI):
 
