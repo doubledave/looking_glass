@@ -1,5 +1,11 @@
 def configure():
-    from .lib.common import conf
+    if __name__ == '__main__':
+        from looking_glass.lib.common.logger import start
+        start(__name__, 'DEBUG')
+
+    from looking_glass.lib.common.conf import Config
+    conf = Config()
+    return conf.parser
 
 
 def start_logger(quiet=False, dev=False, verbose=False, gui=True):
@@ -19,3 +25,10 @@ def start_logger(quiet=False, dev=False, verbose=False, gui=True):
     except InvalidLevelError:
         log = logging.getLogger()
         log.fatal('Invalid log level provided')
+
+    return log
+
+
+def start_gui(config):
+    from looking_glass.lib.gui import GUI
+    GUI()

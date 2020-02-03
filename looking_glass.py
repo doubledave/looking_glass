@@ -36,24 +36,24 @@ class App(LookingGlass):
         if args.gui:
             print('Not yet implemented')
         import looking_glass
-        looking_glass.start(dev=True)
-        config = LookingGlass.config
-    #     import logging
-    #
-    #     self.log = logging.getLogger()
-    #     from looking_glass.lib import Config
-    #
-    #     self.conf = Config()
-    #     self.conf
-    #     self.run()
-    #
-    # # noinspection SpellCheckingInspection
-    # def run(self, ):
-    #     from looking_glass.lib import GUI
-    #
-    #     log = self.log
-    #
-    #     log.debug('Getting TopWindow')
+        log = looking_glass.start_logger(dev=True)
+        config = looking_glass.configure()
+        sep = ', '
+        log.debug(f"Received parsed data with sections: '{sep.join(config.sections())}'")
+
+        self.log = log
+        self.args = args
+        self.config = config
+
+    def run(self):
+        from looking_glass.lib.gui import GUI
+        log = self.log
+
+        log.debug('Starting GUI')
+        GUI(self.config).run(self.config)
+
+
+
     #     top_window = GUI.top_window(self._config_).window
     #
     #     log.debug('Instantiating TopWindow')
@@ -114,5 +114,6 @@ class App(LookingGlass):
 
 if __name__ == "__main__":
     app = App()
+    app.run()
 else:
     print('Being imported, but not running __init__')
