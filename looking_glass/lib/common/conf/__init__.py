@@ -4,4 +4,3 @@ class Config:
         import configparser
 
         config = configparser.ConfigParser()
-        
