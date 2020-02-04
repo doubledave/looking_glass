@@ -1,7 +1,13 @@
-from looking_glass.lib import GUI
+def menu():
+    """
+    Will return the structure for the top-menu, which will be shown on the top_window
 
-class TopMenu(GUI):
-
-
-    def __init__(self):
-        log = _start
+    :return: List containing various buttons
+    """
+    main_menu = [
+        ['File', ['Settings::_SETTINGS_BUTTON_']],
+        ['Help', ['Docs', ['@softworks.inspyre.tech'],
+                  ],
+         ],
+    ]
+    return main_menu

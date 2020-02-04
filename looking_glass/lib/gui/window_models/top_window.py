@@ -42,12 +42,7 @@ def _first_time_(self, config):
         _pop_set_win(config)
 
 
-def _top_menu_():
-    menu = [
-        ['File', ['Settings::_SETTINGS_BUTTON_']],
-        ['Help', ['Docs', ['@softworks.inspyre.tech'],],],
-    ]
-    return menu
+
 
 def _button_frame_():
     """
@@ -74,7 +69,7 @@ def _sense_frame_(config):
     else:
         temp = info.get_temp(raw=False)
 
-    humidity = round(info.get_humidity())
+    humidity = round(info.get_humidity(quick=True))
     humidity = humidity.__str__()
     print(humidity)
 
@@ -88,8 +83,10 @@ def _sense_frame_(config):
 
 def _layout_(config):
     import PySimpleGUIQt as qt
+    from looking_glass.lib.gui.menus import top
+    top_menu = top.menu()
     struct = [
-        [qt.Menu(_top_menu_())],
+        [qt.Menu(top_menu)],
         [qt.Text('Welcome to Test API!')],
         [qt.Combo(['Living Room', 'Playroom'])],
         [qt.Frame('', _sense_frame_(config))],

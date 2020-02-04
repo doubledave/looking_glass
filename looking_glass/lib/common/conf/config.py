@@ -18,7 +18,6 @@ class Config(App):
 
         return new_file_names
 
-
     def __init__(self, custom_conf=None):
         import os
         from configparser import ConfigParser
@@ -50,12 +49,11 @@ class Config(App):
         print('Found config files:', sorted(found))
         print('Missing files     :', sorted(missing))
 
-
-
     def write(self):
         import os
         with open(os.getcwd() + '/conf/config.ini', 'w') as conf_file:
             self.config.write(conf_file)
+
 
 if __name__ == "__main__":
     config = Config()

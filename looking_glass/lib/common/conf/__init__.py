@@ -15,7 +15,6 @@ class Config:
         self.file_pot = []
         parser = ConfigParser()
 
-
         log = logging.getLogger(__name__)
 
         if __name__ == '__main__':
@@ -54,7 +53,7 @@ class Config:
 
         found = parser.read(self.file_pot)
         missing = set(self.file_pot) - set(found)
-        log.debug(f'Found logfile with the following sections: {found}')
+        log.debug(f'Found the following conf-file: {found}')
         log.info(f'Found config files: {sorted(found)}')
         log.debug(f'Missing files: {sorted(missing)}')
         sep = ', '
@@ -66,4 +65,3 @@ class Config:
             log.debug(f"The keys in '{section}' are '{settings}'")
 
         self.parser = parser
-

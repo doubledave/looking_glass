@@ -4,6 +4,7 @@ class SenseInfo(object):
     def __init__(self):
         import logging
         self.log = logging.getLogger(__name__)
+        self.log.debug(f'Logger started for {__name__}')
 
     @staticmethod
     def _get_device_():
@@ -41,9 +42,10 @@ class SenseInfo(object):
 
         return temp
 
-    def get_humidity(self):
+    def get_humidity(self, quick=False):
         sense = self._get_device_()
-        sense.show_message('Getting Humidity')
+        if not quick:
+            sense. sage('Getting Humidity')
 
         return sense.humidity
 
@@ -56,3 +58,18 @@ class SenseInfo(object):
 
         return pres
 
+    def get_all(self, quick=True):
+        sense = self._get_device_()
+        data = {
+            'temp': {
+                'main': 0.00,
+                'hum':  0.00,
+                'pres': 0.00,
+            },
+
+            'hum':  0.00,
+            'pres': 0.00
+        }
+
+        data['temp']['main'] = sense.temperature
+        data['temp']['hum']  = sense.get_temperature_from_humidity()
