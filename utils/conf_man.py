@@ -96,10 +96,20 @@ def show():
             for setting in vals:
                 val = vals[setting]
                 print(val)
-                setting = setting.split(sep='.')
-                if val != config.get(setting[0], setting[1]):
+                spl_setting = setting.split(sep='.')
+                if val != config.get(spl_setting[0], spl_setting[1]):
                     print('value changed')
-                config[setting[0]][setting[1]] = val
+                    print(val)
+                    print(spl_setting[0])
+                    if spl_setting[0] == 'gui_settings':
+                        if spl_setting[1] == 'grab_anywhere':
+                            print(f'the val is {val}')
+                            if val == 'True':
+                                window.grab_any_where_on()
+                            else:
+                                window.grab_any_where_off()
+                        print('It is grab anywhere')
+                config[spl_setting[0]][spl_setting[1]] = val
             confirm = gui.PopupYesNo('Are you sure you want to save config?', title='Confirm Save')
             if confirm.lower() == 'yes':
                 print('Saving')
