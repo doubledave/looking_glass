@@ -58,12 +58,8 @@ def save_config():
 def grabby(config):
     grab = config.get('gui_settings', 'grab_anywhere')
     print(type(grab))
-    if grab.lower() in ['true', '1', 't', 'y', 'yes', 'affirmative', 'positive']:
-        return True
-    else:
-        return False
-
-
+    return grab.lower() in ['true', '1', 't', 'y', 'yes', 'affirmative', 'positive'] # Use 'grab' string to return a True or False bool
+ 
 def show():
     print(config.sections())
     layout = []
