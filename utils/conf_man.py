@@ -42,8 +42,11 @@ def save_config():
     print(config.sections())
     from pathlib import Path
     import os
-    file = os.getcwd()
-    file = str(file + '/conf_man/output/config.ini')
+    filepath = os.getcwd()
+    filepath = filepath + "/conf_man/output"
+    if not os.path.exists(filepath):
+        os.makedirs(filepath)
+    file = str(filepath + '/config.ini')
 
     if check_overwrite(file):
         print('Saving...')
@@ -55,12 +58,8 @@ def save_config():
 def grabby(config):
     grab = config.get('gui_settings', 'grab_anywhere')
     print(type(grab))
-    if grab == 'None':
-        return False
-    else:
-        return grab
-
-
+    return grab.lower() in ['true', '1', 't', 'y', 'yes', 'affirmative', 'positive'] # Use 'grab' string to return a True or False bool
+ 
 def show():
     print(config.sections())
     layout = []
@@ -113,9 +112,9 @@ def show():
 def run():
     global config
     import os
-    print(os.getcwd())
     path = os.getcwd()
     path = str(path)
+    print(path)
     file = gui.PopupGetFile(
         'Pick a config file',
         default_path=path,
