@@ -58,10 +58,10 @@ def save_config():
 def grabby(config):
     grab = config.get('gui_settings', 'grab_anywhere')
     print(type(grab))
-    if grab == 'None':
-        return False
+    if grab.lower() in ['true', '1', 't', 'y', 'yes', 'affirmative', 'positive']:
+        return True
     else:
-        return grab
+        return False
 
 
 def show():
