@@ -90,7 +90,7 @@ def show():
         if event == 'apply':
             window.refresh()
             print('window refreshed')
-            
+
 
         if event == 'apply' or event == 'ok':
             print(vals)
