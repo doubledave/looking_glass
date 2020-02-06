@@ -42,8 +42,11 @@ def save_config():
     print(config.sections())
     from pathlib import Path
     import os
-    file = os.getcwd()
-    file = str(file + '/conf_man/output/config.ini')
+    filepath = os.getcwd()
+    filepath = filepath + "/conf_man/output"
+    if not os.path.exists(filepath):
+        os.makedirs(filepath)
+    file = str(filepath + '/config.ini')
 
     if check_overwrite(file):
         print('Saving...')
@@ -113,9 +116,9 @@ def show():
 def run():
     global config
     import os
-    print(os.getcwd())
     path = os.getcwd()
     path = str(path)
+    print(path)
     file = gui.PopupGetFile(
         'Pick a config file',
         default_path=path,
