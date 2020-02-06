@@ -46,13 +46,11 @@ class App(LookingGlass):
         self.config = config
 
     def run(self):
-        from looking_glass.lib.gui import GUI
+        import looking_glass
+        gui = looking_glass.start_gui(self.config)
         log = self.log
 
         log.debug('Starting GUI')
-        gui = GUI(self.config)
-        gui = gui.run(
-        )
 
         while True:
             event, val = gui.top_win.read(timeout=100)

@@ -31,4 +31,5 @@ def start_logger(quiet=False, dev=False, verbose=False, gui=True):
 
 def start_gui(config):
     from looking_glass.lib.gui import GUI
-    GUI()
+    gui = GUI(config)
+    return gui

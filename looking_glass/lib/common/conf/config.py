@@ -43,7 +43,7 @@ class Config(App):
             file_names.insert(0, custom_conf)
 
         found = parser.read(file_names)
-        print(parser.sections())
+        log.info(f'Found config file with the following sections: {parser.sections}')
         missing = set(file_names) - set(found)
 
         print('Found config files:', sorted(found))

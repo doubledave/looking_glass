@@ -25,7 +25,6 @@ class Config:
 
         log.debug('Starting config parser')
         log.debug('Started!')
-        print(__name__)
 
         if custom_conf is None:
             log.info('I did not receive a custom configuration path in the command-line arguments.')

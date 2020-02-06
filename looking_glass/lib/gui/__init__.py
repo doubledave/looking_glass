@@ -6,13 +6,13 @@ class GUI:
     def __init__(self, config):
         import logging
 
-
-
         self.config = config
 
         log = logging.getLogger(__name__)
         log.debug(f'Logger started for {__name__}')
         self.log = log
+        self.top_win = None
+        self.run()
 
     def run(self):
         import PySimpleGUIQt as qt
